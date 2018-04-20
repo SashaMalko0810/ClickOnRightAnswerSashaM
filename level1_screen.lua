@@ -70,6 +70,9 @@ local congratulationText
 -- Displays text that says correct.
 local correct 
 
+-- Displays text that says incorrect.
+local incorrect 
+
 -- Displays the level text of time text
 local level1Text 
 
@@ -194,7 +197,6 @@ local function TouchListenerWrongAnswer1(touch)
 
         alreadyClickedAnswer = true
 
-
         if (answer ~= tonumber(userAnswer)) then
             -- decrease a life
             lives = lives - 1
@@ -292,6 +294,12 @@ function scene:create( event )
     correct = display.newText("Correct", display.contentWidth/2, display.contentHeight*1/3, nil, 50 )
     correct:setTextColor(100/255, 47/255, 210/255)
     correct.isVisible = false
+
+    -- create the text object that will say Incorrect, set the colour and then hide it
+    incorrect = display.newText("InCorrect", display.contentWidth/2, display.contentHeight*1/3, nil, 50 )
+    incorrect:setTextColor(100/255, 47/255, 210/255)
+    incorrect.isVisible = false
+
 
     -- create the text object that will say Out of Time, set the colour and then hide it
     outOfTimeText = display.newText("Out of Time!", display.contentWidth*2/5, display.contentHeight*1/3, nil, 50)
