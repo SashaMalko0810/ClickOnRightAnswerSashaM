@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 -- you_lose.lua
 -- Created by: Gil Robern
--- Modified by: Your Name
--- Date: Month Day, Year
+-- Modified by: Sasha Malko
+-- Date: April 20, 2018
 -- Description: This shows the player that they lost the game and plays a booing sound.
 -----------------------------------------------------------------------------------------
 
@@ -32,6 +32,9 @@ local scene = composer.newScene( sceneName )
 -- local variables for the scene
 local bkg
 
+--Sounds
+local youLoseSound = audio.loadSound("Sounds/Kids Booing.mp3")
+local youLoseSoundChannel
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -75,6 +78,9 @@ function scene:show( event )
 
     if ( phase == "will" ) then
         -- Called when the scene is still off screen (but is about to come on screen).
+
+        --play music
+        youLoseSoundChannel = audio.play(youLoseSound)
 
     -----------------------------------------------------------------------------------------
 

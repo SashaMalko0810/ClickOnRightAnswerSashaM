@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 -- you_win.lua
 -- Created by: Gil Robern
--- Modified by: Your Name
--- Date: Month Day, Year
+-- Modified by: Sasha Malko
+-- Date: April 20, 2018
 -- Description: This shows the player that they lost the game and plays a booing sound.
 -----------------------------------------------------------------------------------------
 
@@ -31,6 +31,10 @@ local scene = composer.newScene( sceneName )
 
 -- local variables for the scene
 local bkg
+
+--Sounds
+local youWinSound = audio.loadSound("Sounds/youWinSound.wav")
+local youWinSoundChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -75,6 +79,9 @@ function scene:show( event )
 
     if ( phase == "will" ) then
         -- Called when the scene is still off screen (but is about to come on screen).
+        
+        --play music
+        youWinSoundChannel = audio.play(youWinSound)
 
     -----------------------------------------------------------------------------------------
 

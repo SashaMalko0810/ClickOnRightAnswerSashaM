@@ -2,8 +2,8 @@
 --
 -- level1_screen.lua
 -- Created by: Gil Robern
--- Modified by: Your Name
--- Date: Month Day, Year
+-- Modified by: Sasha Malko
+-- Date: April 20, 2018
 -- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 
@@ -182,6 +182,16 @@ local function RestartScene()
         DetermineAnswers()
         DisplayAnswers()
     end
+
+    --if they have 3 points, go to the You Win screen
+    if (numberCorrect == 3) then
+        composer.gotoScene("you_win")
+    else 
+
+        DisplayAddEquation()
+        DetermineAnswers()
+        DisplayAnswers()
+    end
 end
 
 -- Functions that checks if the buttons have been clicked.
@@ -280,7 +290,7 @@ local function AddTextObjectListeners()
     answerTextObject:addEventListener("touch", TouchListenerAnswer)
     wrongAnswer1TextObject:addEventListener("touch", TouchListenerWrongAnswer1)
     wrongAnswer2TextObject:addEventListener("touch", TouchListenerWrongAnswer2)
-    wrongAnswer3TextObject:removeEventListener("touch", TouchListenerWrongAnswer3)
+    wrongAnswer3TextObject:addEventListener("touch", TouchListenerWrongAnswer3)
 end
 
 -- Function that removes the touch listeners from each of the answer objects
@@ -318,16 +328,16 @@ function scene:create( event )
     bkg.height = display.contentHeight
 
     -- create the text object that will hold the add equation. Make it empty for now.
-    addEquationTextObject = display.newText( "", 250, 500, nil, 50 )
+    addEquationTextObject = display.newText( "", 250, 500, nil,60 )
 
     -- sets the color of the add equation text object
     addEquationTextObject:setTextColor(155/255, 42/255, 198/255)
 
     -- create the text objects that will hold the correct answer and the wrong answers
-    answerTextObject = display.newText("", display.contentWidth*.4, 600, nil, 50 )
-    wrongAnswer1TextObject = display.newText("", display.contentWidth*.3, 600, nil, 50 )
-    wrongAnswer2TextObject = display.newText("", display.contentWidth*.2, 600, nil, 50 )
-    wrongAnswer3TextObject = display.newText("", display.contentWidth*.1, 600, nil, 50 )
+    answerTextObject = display.newText("", display.contentWidth*.4, 600, nil, 60 )
+    wrongAnswer1TextObject = display.newText("", display.contentWidth*.3, 600, nil, 60 )
+    wrongAnswer2TextObject = display.newText("", display.contentWidth*.2, 600, nil, 60 )
+    wrongAnswer3TextObject = display.newText("", display.contentWidth*.1, 600, nil, 60 )
     numberCorrectText = display.newText("", display.contentWidth*4/5, display.contentHeight*6/7, nil, 25)
 
     -- create the text object that will hold the number of lives
